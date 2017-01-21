@@ -1,0 +1,18 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version - compatible ruby version is 2.2.3
+* seed - Please run seed file to create admin 
+* Admin - can approve comments and add blog from url http://localhost:3000/comments_to_approve if code is     running on port 3000 in development mode  
+
+
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

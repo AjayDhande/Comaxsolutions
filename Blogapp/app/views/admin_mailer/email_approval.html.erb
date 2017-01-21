@@ -1,0 +1,17 @@
+<p>Hi Admin,</p>
+
+<p>A new comment on the post <b>"<%= @blog_title%>"</b> is waiting for your approval.</p>
+
+<p><b>User Name:</b> <%= @name%></p>
+
+<p><b>Email:</b> <%= @email%></p>
+
+<p><b>Comment:</b><br> <%= @message%></p>
+
+<p>Sent from (ip address): <%= @client_ip %></br>
+Date/Time: <%= Time.now.strftime("%d %b %Y %l:%M:%S") %><br>
+Using (user agent): <%= @browser %></p>
+
+<p>Thanks,<br>
+<p>Blog App</p>
+</p>

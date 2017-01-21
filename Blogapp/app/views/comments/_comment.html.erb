@@ -1,0 +1,33 @@
+<div class="row padding2">
+	<div class="col-sm-12">
+		<div class="row">
+			<div class="col-sm-7">
+				<p>
+					<strong>Name:</strong>
+					<%= comment.user_name %>
+				</p>
+				<% if signed_in? %>
+				<p>
+					<strong>Email:</strong>
+					<%= comment.email %>
+				</p>
+				<p>
+					<strong>Website:</strong>
+					<%= comment.website %>
+				</p>
+				<% end %>
+			</div>
+			<% if signed_in? %>
+			<div class="col-sm-5">
+				<%= button_to "Approve", comment_approve_path(comment.blog, comment), {class: "btn btn-info", form: { :style => "display:inline-block;"} } %>
+				<%= link_to 'Reject', [comment.blog, comment], class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+			</div>
+			<% end %>
+		</div>
+		<p>
+			<strong>Message:</strong>
+			<%= comment.message %>
+		</p>
+
+	</div>
+</div>

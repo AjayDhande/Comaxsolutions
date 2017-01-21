@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag 'application' %>
+  
+  <link href="<%= asset_path 'bootstrap.min.css' %>" rel="stylesheet" type="text/css">
+  <link href="<%= asset_path 'animate.min.css' %>" rel="stylesheet" type="text/css"> 
+  <link href="<%= asset_path 'font-awesome.min.css' %>" rel="stylesheet" type="text/css">
+  <link href="<%= asset_path 'lightbox.css' %>" rel="stylesheet" type="text/css">
+  <link href="<%= asset_path 'main.css' %>" rel="stylesheet" type="text/css">
+  <link id="css-preset" href="<%= asset_path 'presets/preset1.css' %>" rel="stylesheet" type="text/css">
+  <link href="<%= asset_path 'responsive.css' %>" rel="stylesheet" type="text/css">
+  <link href="<%= asset_path 'custom.css' %>" rel="stylesheet" type="text/css">
+
+ <%= javascript_include_tag 'jquery.js', 'jquery.validate.js', 'jquery.validate.min.js' %>
+</head>
+
+<body style="overflow-x:hidden;">
+  <header>
+  </header>
+
+  <% if user_signed_in? %>
+    <div class="container1">
+      <div class="col-sm-12" style="background: #eee;">
+        <p style="margin-top:10px;">
+          Signed in as <%= current_user.email %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "float_right" %>
+        </p>
+      </div>
+    </div>
+  <%end%>
+
+  <% flash.each do |key, value| %>
+    <div class=" container1 alert alert-<%= key %>">
+      <div class="container">
+        <div class="col-sm-12"> <%= value %></div>
+      </div>
+    </div>
+  <% end %>
+
+<%= yield %>
+
+  
+  <footer>
+  </footer>
+
+  <%= javascript_include_tag 'jquery.js', 'bootstrap.min.js', 'jquery.inview.min.js', 'wow.min.js', 'mousescroll.js', 'smoothscroll.js', 'jquery.countTo.js', 'lightbox.min.js', 'custom.js' %>
+
+</body>
+</html>

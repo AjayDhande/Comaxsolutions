@@ -1,0 +1,45 @@
+<div class="container container1">
+  <div class="row">
+    <h2 class="text-center">Blog</h2>
+  </div>
+  
+  <%= form_tag(root_path, :method => "get", id: "search-form") do %>
+    <div class="text-right">
+      <%= text_field_tag :search, params[:search], placeholder: "Search Blogs" %>
+      <%= submit_tag "Search", :name => nil %>
+    </div>
+  <% end %>
+  
+  <div class="text-right">
+    <% if @blogs.blank? %>
+      <h4>There are no blogs containing the term <%= params[:search] %>.</h4>
+    <% end %>
+  </div>
+
+
+  <% @blogs.each do |blog|%>
+    <div class="row text-height">
+      <div class="blog-posts col-sm-12">
+        <div class="col-sm-2">
+          <div class="col-sm-12"><div class="box1"><%= blog.created_at.strftime("%d %b %Y")%></div></div>
+          <div class="col-sm-12"><div class="comment"><%= blog.comments.count%><br>Comments</div></div>
+        </div>
+        <div class="col-sm-8">
+          <p><h4><b><%= blog.title %></b></h4></p>
+          <p>by: <%= blog.created_by %></p>
+          <p><%= render html: "#{blog.body.first(350)}".html_safe %><p>
+          <a href="/blogs/<%=blog.slug%>" class="">Continue Reading...</a>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+    </div>
+  <%end%>
+
+  <div class="col-sm-12">
+    <div class="col-sm-2"></div>
+    <div class="col-sm=8">
+      <%= will_paginate @blogs %>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
